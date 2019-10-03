@@ -1,18 +1,27 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <router-view />
+    <van-tabbar v-model="active" route active-color="#07c160" inactive-color="#000">
+      <van-tabbar-item replace icon="home-o" to="/">首页</van-tabbar-item>
+      <van-tabbar-item replace icon="add-o" to="/add">新增</van-tabbar-item>
+      <van-tabbar-item replace icon="user-o" to="/mine">我的</van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import { Tabbar, TabbarItem } from 'vant';
 export default {
-  name: 'home',
+  name: "home",
   components: {
-    HelloWorld
+    [Tabbar.name]: Tabbar,
+    [TabbarItem.name]: TabbarItem
+  },
+  data () {
+    return {
+      active: 0
+    }
   }
-}
+};
 </script>
